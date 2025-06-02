@@ -6,6 +6,7 @@ export default function ShoppingCart({ cart, onRemove }) {
     if (items === 0) {
         return null;
     } //cart.reduce() 
+
     const price = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
     return (
@@ -15,41 +16,34 @@ export default function ShoppingCart({ cart, onRemove }) {
             borderRadius: '8px', 
             alignItems: 'center'
         }}>
-
             <h2>Shopping Cart</h2>
             <ul>
                 {cart.map(item => (
                     <li key={item.id} style={{
                         display: 'flex',
                         justifyContent: 'space-between',
-                        padding: '5px',
+                        width: '100%',
+                        padding: '10px',
                     }}>
-                        
                         <h3>{item.name}</h3>
                         <p>${item.price}</p>
                         <p>{item.quantity}</p>
                         <button onClick={() => onRemove(item.id)} style={{
                             backgroundColor: 'red',
-                            color: 'white', 
-                            cursor: 'pointer' 
+                            color: 'white',
+                            padding: '5px'
                         }}>Remove</button>
                     </li>
                 ))}
             </ul>
-             <div style={{
-                marginTop: '15px',
-                padding: '10px ',
-                display: 'flex',
-                justifyContent: 'space-between'
-            }}></div>
             <h3>Total</h3>
             <div style={{
-                background: 'green',
+                display: 'flex',
+                justifyContent: 'space-between',
+                padding: '10px',
                 color: 'white',
                 width: '100%',
-                marginTop: '10px',
-                cursor: 'pointer'
-                
+                backgroundColor: 'green',
             }}>
             
             <p>Items: {items}</p>
